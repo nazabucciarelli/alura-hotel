@@ -4,25 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cfb8838b-ed1e-4384-bfd4-8e11f06124a2" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Challenge One - Alura Hotel/controller/BookingController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Challenge One - Alura Hotel/controller/BookingController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Challenge One - Alura Hotel/controller/CustomerController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Challenge One - Alura Hotel/controller/CustomerController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Challenge One - Alura Hotel/dao/BookingDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Challenge One - Alura Hotel/dao/BookingDAO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Challenge One - Alura Hotel/dao/CustomerDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Challenge One - Alura Hotel/dao/CustomerDAO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Challenge One - Alura Hotel/views/Busqueda$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Challenge One - Alura Hotel/views/Busqueda$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Challenge One - Alura Hotel/views/Busqueda$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Challenge One - Alura Hotel/views/Busqueda$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Challenge One - Alura Hotel/views/Busqueda$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Challenge One - Alura Hotel/views/Busqueda$3.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Challenge One - Alura Hotel/views/Busqueda$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Challenge One - Alura Hotel/views/Busqueda$4.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Challenge One - Alura Hotel/views/Busqueda$5.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Challenge One - Alura Hotel/views/Busqueda$5.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Challenge One - Alura Hotel/views/Busqueda$6.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Challenge One - Alura Hotel/views/Busqueda$6.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Challenge One - Alura Hotel/views/Busqueda.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Challenge One - Alura Hotel/views/Busqueda.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/BookingController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/BookingController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/CustomerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/CustomerController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dao/BookingDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dao/BookingDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dao/CustomerDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dao/CustomerDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/Busqueda.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/Busqueda.java" afterDir="false" />
-    </list>
+    <list default="true" id="cfb8838b-ed1e-4384-bfd4-8e11f06124a2" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -164,7 +146,7 @@
       <workItem from="1693328805173" duration="1535000" />
       <workItem from="1693330415718" duration="108000" />
       <workItem from="1693330579883" duration="1626000" />
-      <workItem from="1693332369656" duration="5821000" />
+      <workItem from="1693332369656" duration="5867000" />
     </task>
     <servers />
   </component>
