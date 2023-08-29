@@ -20,7 +20,7 @@ public class CustomerController {
     public List<Customer> getAllCustomers() {
         return this.customerDAO.getAllCustomers();
     }
-    public void deleteById(Long id){
-        this.customerDAO.deleteById(id);
+    public int deleteById(Long id){
+        return this.customerDAO.deleteById(id);
     }
 }

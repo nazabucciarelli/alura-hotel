@@ -17,11 +17,11 @@ public class BookingController {
         return this.bookingDAO.save(booking);
     }
 
-    public long getBookingLastId(){
-        return this.bookingDAO.getBookingLastId();
-    }
-
     public List<Booking> getAllBookings() {
         return this.bookingDAO.getAllBookings();
+    }
+
+    public int deleteById(long id){
+        return this.bookingDAO.deleteById(id);
     }
 }

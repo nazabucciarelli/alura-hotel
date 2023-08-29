@@ -6,12 +6,25 @@
   <component name="ChangeListManager">
     <list default="true" id="cfb8838b-ed1e-4384-bfd4-8e11f06124a2" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Challenge One - Alura Hotel/controller/CustomerController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Challenge One - Alura Hotel/controller/CustomerController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Challenge One - Alura Hotel/dao/BookingDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Challenge One - Alura Hotel/dao/BookingDAO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Challenge One - Alura Hotel/dao/CustomerDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Challenge One - Alura Hotel/dao/CustomerDAO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Challenge One - Alura Hotel/dao/UserDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Challenge One - Alura Hotel/dao/UserDAO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Challenge One - Alura Hotel/views/Busqueda.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Challenge One - Alura Hotel/views/Busqueda.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Challenge One - Alura Hotel/views/Exito$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Challenge One - Alura Hotel/views/Exito$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Challenge One - Alura Hotel/views/Exito.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Challenge One - Alura Hotel/views/Exito.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Challenge One - Alura Hotel/views/RegistroHuesped$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Challenge One - Alura Hotel/views/RegistroHuesped$4.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Challenge One - Alura Hotel/views/RegistroHuesped$5.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Challenge One - Alura Hotel/views/RegistroHuesped$5.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Challenge One - Alura Hotel/views/RegistroHuesped.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Challenge One - Alura Hotel/views/RegistroHuesped.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/controller/BookingController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/BookingController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/controller/CustomerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/CustomerController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/UserController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/dao/BookingDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dao/BookingDAO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/dao/CustomerDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dao/CustomerDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/Booking.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Booking.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dao/UserDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dao/UserDAO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/views/Busqueda.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/Busqueda.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/Exito.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/Exito.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/RegistroHuesped.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/RegistroHuesped.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,9 +44,9 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": -1
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: -1
+}</component>
   <component name="ProjectId" id="2UUSeUvSqa0g1FEV11oHoyaAYO2" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -45,7 +58,7 @@
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;repositorio-base&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -58,8 +71,8 @@
   }
 }</component>
   <component name="RunManager" selected="Application.MenuUsuario">
-    <configuration name="Busqueda" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="views.Busqueda" />
+    <configuration name="Exito" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="views.Exito" />
       <module name="Challenge One - Alura Hotel" />
       <extension name="coverage">
         <pattern>
@@ -78,8 +91,8 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="MenuUsuario" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="views.MenuUsuario" />
+    <configuration name="MenuPrincipal" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="views.MenuPrincipal" />
       <module name="Challenge One - Alura Hotel" />
       <extension name="coverage">
         <pattern>
@@ -91,8 +104,8 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="RegistroHuesped" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="views.RegistroHuesped" />
+    <configuration name="MenuUsuario" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="views.MenuUsuario" />
       <module name="Challenge One - Alura Hotel" />
       <extension name="coverage">
         <pattern>
@@ -120,10 +133,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="Application.MenuUsuario" />
+        <item itemvalue="Application.Exito" />
+        <item itemvalue="Application.MenuPrincipal" />
         <item itemvalue="Application.Main" />
         <item itemvalue="Application.ReservasView" />
-        <item itemvalue="Application.RegistroHuesped" />
-        <item itemvalue="Application.Busqueda" />
       </list>
     </recent_temporary>
   </component>
@@ -150,6 +163,10 @@
       <workItem from="1693245249873" duration="2599000" />
       <workItem from="1693276299481" duration="193000" />
       <workItem from="1693276563852" duration="3921000" />
+      <workItem from="1693328805173" duration="1535000" />
+      <workItem from="1693330415718" duration="108000" />
+      <workItem from="1693330579883" duration="1626000" />
+      <workItem from="1693332369656" duration="2772000" />
     </task>
     <servers />
   </component>

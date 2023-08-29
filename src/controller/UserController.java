@@ -10,10 +10,12 @@ public class UserController {
     private UserDAO userDAO;
 
     public UserController(){
+
         this.userDAO = new UserDAO(new ConnectionFactory().getConnection());
     }
 
     public long login(User user){
+
         return this.userDAO.isUserCorrect(user);
     }
 }

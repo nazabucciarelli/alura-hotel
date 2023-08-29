@@ -32,12 +32,14 @@ public class UserDAO {
             try(ps){
                 ps.setString(1,user.getUsername());
                 ResultSet rs = ps.executeQuery();
-                if(rs.next()){
-                    String password = rs.getString("password");
-                    long id = rs.getLong("id");
-                    if (user.getPassword().equals(password)){
-                        return id;
-                    };
+                try(rs){
+                    if(rs.next()){
+                        String password = rs.getString("password");
+                        long id = rs.getLong("id");
+                        if (user.getPassword().equals(password)){
+                            return id;
+                        };
+                    }
                 }
                 return 0;
             }

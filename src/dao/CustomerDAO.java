@@ -64,12 +64,13 @@ public class CustomerDAO {
         }
     }
 
-    public void deleteById(long id){
+    public int deleteById(long id){
         try{
             PreparedStatement ps = this.con.prepareStatement("DELETE FROM customer WHERE ID = ?");
             try(ps){
-                int rowsDeleted = ps.executeUpdate();
-                System.out.println(rowsDeleted + " rows have benn deleted");
+                ps.setLong(1,id);
+                ps.executeUpdate();
+                return 0;
             }
         } catch (SQLException e){
             throw new RuntimeException(e);

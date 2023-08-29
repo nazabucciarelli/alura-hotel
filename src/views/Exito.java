@@ -24,20 +24,20 @@ public class Exito extends JDialog {
 	/**
 	 * Launch the application.
 	 */
-	/*public static void main(String[] args) {
+	public static void main(String[] args) {
 		try {
-			Exito dialog = new Exito();
+			Exito dialog = new Exito(1l,2l);
 			dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 			dialog.setVisible(true);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
-*/
+
 	/**
 	 * Create the dialog.
 	 */
-	public Exito(Long userId) {
+	public Exito(Long userId,Long booking_id) {
 		setIconImage(Toolkit.getDefaultToolkit().getImage(Exito.class.getResource("/imagenes/aH-40px.png")));
 		setBounds(100, 100, 394, 226);
 		getContentPane().setLayout(new BorderLayout());
@@ -53,10 +53,11 @@ public class Exito extends JDialog {
 			contentPanel.add(lblNewLabel);
 		}
 		{
-			JLabel lblNewLabel_1 = new JLabel("Datos guardados satisfactoriamente");
+			JLabel lblNewLabel_1 = new JLabel("<html>Datos guardados satisfactoriamente, su<br/> número de" +
+					" reserva es: " + booking_id+ "</html>");
 			lblNewLabel_1.setForeground(new Color (12, 138, 199));
-			lblNewLabel_1.setFont(new Font("Arial", Font.BOLD, 18));
-			lblNewLabel_1.setBounds(27, 122, 390, 21);
+			lblNewLabel_1.setFont(new Font("Arial", Font.BOLD, 12));
+			lblNewLabel_1.setBounds(27, 122, 350, 30);
 			contentPanel.add(lblNewLabel_1);
 		}
 		{

@@ -6,31 +6,21 @@ import model.Booking;
 import model.Customer;
 
 import java.awt.EventQueue;
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.JScrollPane;
+import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.JTable;
-import javax.swing.JTextField;
-import javax.swing.JButton;
-import javax.swing.ImageIcon;
 import java.awt.Color;
 import java.awt.SystemColor;
-import javax.swing.JLabel;
 import java.awt.Font;
 import java.awt.event.ActionListener;
 import java.util.Arrays;
 import java.util.List;
 import java.awt.event.ActionEvent;
-import javax.swing.JTabbedPane;
 import java.awt.Toolkit;
-import javax.swing.SwingConstants;
-import javax.swing.JSeparator;
-import javax.swing.ListSelectionModel;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionAdapter;
+import java.util.Optional;
 
 @SuppressWarnings("serial")
 public class Busqueda extends JFrame {
@@ -123,7 +113,7 @@ public class Busqueda extends JFrame {
 		modeloHuesped.addColumn("Nacionalidad");
 		modeloHuesped.addColumn("Telefono");
 		modeloHuesped.addColumn("Número de Reserva");
-		cargarTabla();
+		cargarTablas();
 		JScrollPane scroll_tableHuespedes = new JScrollPane(tbHuespedes);
 		panel.addTab("Huéspedes", new ImageIcon(Busqueda.class.getResource("/imagenes/pessoas.png")), scroll_tableHuespedes, null);
 		scroll_tableHuespedes.setVisible(true);
@@ -263,7 +253,9 @@ public class Busqueda extends JFrame {
 		btnEliminar.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				//customerController.deleteById();
+				eliminar();
+				limpiarTablas();
+				cargarTablas();
 			}
 		});
 		
@@ -276,7 +268,38 @@ public class Busqueda extends JFrame {
 		setResizable(false);
 	}
 
-	private void cargarTabla(){
+	private boolean tieneFilaElegida(JTable table) {
+		return table.getSelectedRowCount() != 0 || table.getSelectedColumnCount() != 0;
+	}
+
+	private void eliminar() {
+		if (!tieneFilaElegida(tbHuespedes) && !tieneFilaElegida(tbReservas)) {
+			JOptionPane.showMessageDialog(this, "Por favor, elije un item");
+			return;
+		}
+		if(tieneFilaElegida(tbHuespedes)){
+			Optional.ofNullable(tbHuespedes.getModel().getValueAt(tbHuespedes.getSelectedRow(), tbHuespedes.getSelectedColumn()))
+					.ifPresentOrElse(fila -> {
+						Long id = Long.valueOf(tbHuespedes.getModel().getValueAt(tbHuespedes.getSelectedRow(), 6).toString());
+						int rowsDeleted = this.bookingController.deleteById(id);
+						JOptionPane.showMessageDialog(this, "Se han eliminado " + rowsDeleted +" clientes y reservas.");
+					}, () -> JOptionPane.showMessageDialog(this, "Ha ocurrido un error"));
+		}
+		if(tieneFilaElegida(tbReservas)){
+			Optional.ofNullable(tbReservas.getModel().getValueAt(tbReservas.getSelectedRow(), tbReservas.getSelectedColumn()))
+					.ifPresentOrElse(fila -> {
+						Long id = Long.valueOf(tbReservas.getModel().getValueAt(tbReservas.getSelectedRow(), 0).toString());
+						int bookingsCustomersDeleted = this.bookingController.deleteById(id);
+						JOptionPane.showMessageDialog(this, "Se han eliminado "+ bookingsCustomersDeleted +" clientes y reservas.");
+					}, () -> JOptionPane.showMessageDialog(this, "Ha ocurrido un error"));
+		}
+	}
+
+	private void eliminarFila(JTable table){
+
+	}
+
+	private void cargarTablas(){
 		List<Customer> customers = customerController.getAllCustomers();
 		List<Booking> bookings = bookingController.getAllBookings();
 		customers.forEach(customer -> modeloHuesped.addRow(new Object[] { customer.getId(),customer.getName(),
@@ -284,6 +307,11 @@ public class Busqueda extends JFrame {
 				customer.getBookingId()}));
 		bookings.forEach(booking -> modelo.addRow(new Object[] { booking.getId(),booking.getCheckInDate(),booking.getCheckOutDate(),
 				booking.getValue(), booking.getPayMethod() }));
+	}
+
+	private void limpiarTablas(){
+		modelo.getDataVector().clear();
+		modeloHuesped.getDataVector().clear();
 	}
 	
 //Código que permite mover la ventana por la pantalla según la posición de "x" y "y"

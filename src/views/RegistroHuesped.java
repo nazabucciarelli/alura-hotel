@@ -208,21 +208,7 @@ public class RegistroHuesped extends JFrame {
 		lblTitulo.setFont(new Font("Roboto Black", Font.PLAIN, 23));
 		contentPane.add(lblTitulo);
 		
-		JLabel lblNumeroReserva = new JLabel("NÚMERO DE RESERVA");
-		lblNumeroReserva.setBounds(560, 474, 253, 14);
-		lblNumeroReserva.setForeground(SystemColor.textInactiveText);
-		lblNumeroReserva.setFont(new Font("Roboto Black", Font.PLAIN, 18));
-		contentPane.add(lblNumeroReserva);
-		
-		txtNreserva = new JTextField();
-		txtNreserva.setFont(new Font("Roboto", Font.PLAIN, 16));
-		txtNreserva.setBounds(560, 495, 285, 33);
-		txtNreserva.setColumns(10);
-		txtNreserva.setText(String.valueOf((bookingController.getBookingLastId() +1)));
-		txtNreserva.setBackground(Color.WHITE);
-		txtNreserva.setBorder(javax.swing.BorderFactory.createEmptyBorder());
-		txtNreserva.setEditable(false);
-		contentPane.add(txtNreserva);
+
 		
 		JSeparator separator_1_2 = new JSeparator();
 		separator_1_2.setBounds(560, 170, 289, 2);
@@ -254,14 +240,10 @@ public class RegistroHuesped extends JFrame {
 		separator_1_2_4.setBackground(new Color(12, 138, 199));
 		contentPane.add(separator_1_2_4);
 		
-		JSeparator separator_1_2_5 = new JSeparator();
-		separator_1_2_5.setBounds(560, 529, 289, 2);
-		separator_1_2_5.setForeground(new Color(12, 138, 199));
-		separator_1_2_5.setBackground(new Color(12, 138, 199));
-		contentPane.add(separator_1_2_5);
+
 		
 		JPanel btnguardar = new JPanel();
-		btnguardar.setBounds(723, 560, 122, 35);
+		btnguardar.setBounds(640, 530, 122, 35);
 		btnguardar.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -274,7 +256,7 @@ public class RegistroHuesped extends JFrame {
 				long customer_id = customerController.save(new Customer(name,lastname,birthDate,nacionality,phoneNumber,booking_id));
 				if(booking_id > 0 && customer_id >0){
 					System.out.println("Booking ID:" + booking_id + " and customer ID: " + customer_id + "have been added.");
-					Exito exito = new Exito(booking.getUser_id());
+					Exito exito = new Exito(booking.getUser_id(),booking_id);
 					exito.setVisible(true);
 				} else {
 					JOptionPane.showMessageDialog(btnguardar,"Ha ocurrido un error");

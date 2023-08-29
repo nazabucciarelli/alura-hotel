@@ -11,6 +11,7 @@ public class BookingDAO {
     private final Connection con;
 
     public BookingDAO(Connection con){
+
         this.con = new ConnectionFactory().getConnection();
     }
 
@@ -26,8 +27,10 @@ public class BookingDAO {
                 ps.setLong(5,booking.getUser_id());
                 ps.executeUpdate();
                 ResultSet rs = ps.getGeneratedKeys();
-                rs.next();
-                return rs.getLong(1);
+                try(rs){
+                    rs.next();
+                    return rs.getLong(1);
+                }
             }
         } catch(SQLException e){
             throw  new RuntimeException(e);
@@ -39,15 +42,17 @@ public class BookingDAO {
         try{
             PreparedStatement ps = this.con.prepareStatement("SELECT * FROM booking");
             ResultSet rs = ps.executeQuery();
-            while(rs.next()){
-                Long id = rs.getLong("id");
-                Date checkInDate =rs.getDate("checkin_date");
-                Date checkOutDate = rs.getDate("checkout_date");
-                double value = rs.getDouble("value");
-                String payMethod = rs.getString("pay_method");
-                long userId = rs.getLong("user_id");
-                Booking booking = new Booking(id,checkInDate,checkOutDate,value,payMethod,userId);
-                result.add(booking);
+            try(rs){
+                while(rs.next()){
+                    Long id = rs.getLong("id");
+                    Date checkInDate =rs.getDate("checkin_date");
+                    Date checkOutDate = rs.getDate("checkout_date");
+                    double value = rs.getDouble("value");
+                    String payMethod = rs.getString("pay_method");
+                    long userId = rs.getLong("user_id");
+                    Booking booking = new Booking(id,checkInDate,checkOutDate,value,payMethod,userId);
+                    result.add(booking);
+                }
             }
         } catch (SQLException e){
             throw new RuntimeException(e);
@@ -55,12 +60,18 @@ public class BookingDAO {
         return result;
     }
 
-    public long getBookingLastId(){
+    public int deleteById(long id){
         try{
-            PreparedStatement ps = con.prepareStatement("SELECT MAX(id) FROM booking");
-            ResultSet rs = ps.executeQuery();
-            rs.next();
-            return rs.getLong(1);
+            PreparedStatement ps = this.con.prepareStatement("DELETE FROM customer WHERE booking_id=?");
+            try(ps){
+                ps.setLong(1,id);
+                ps.executeUpdate();
+                PreparedStatement psBooking = this.con.prepareStatement("DELETE FROM booking WHERE id=?");
+                try(psBooking){
+                    psBooking.setLong(1,id);
+                    return psBooking.executeUpdate();
+                }
+            }
         } catch (SQLException e){
             throw new RuntimeException(e);
         }
