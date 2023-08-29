@@ -24,4 +24,10 @@ public class BookingController {
     public int deleteById(long id){
         return this.bookingDAO.deleteById(id);
     }
+
+    public List<Booking> getBookingsById(long id){
+        return this.bookingDAO.getBookingsById(id);
+    }
+
+
 }

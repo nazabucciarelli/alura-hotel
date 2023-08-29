@@ -44,16 +44,7 @@ public class CustomerDAO {
             try(st){
                 ResultSet rs = st.executeQuery("SELECT * FROM customer");
                 try(rs){
-                    while(rs.next()){
-                        long id = rs.getLong("id");
-                        String name = rs.getString("name");
-                        String lastname = rs.getString("lastname");
-                        Date birthDate = rs.getDate("birthDate");
-                        String nacionality = rs.getString("nacionality");
-                        String phoneNumber = rs.getString("phoneNumber");
-                        long bookingId = rs.getLong("booking_id");
-                        result.add(new Customer(id,name,lastname,birthDate,nacionality,phoneNumber,bookingId));
-                    }
+                    fillListOfResult(result, rs);
                     return result;
                 }
             }
@@ -74,6 +65,32 @@ public class CustomerDAO {
             }
         } catch (SQLException e){
             throw new RuntimeException(e);
+        }
+    }
+
+    public List<Customer> getByLastname(String input){
+        List<Customer> result = new ArrayList<>();
+        try{
+            PreparedStatement ps = this.con.prepareStatement("SELECT * FROM customer WHERE lastname LIKE ?");
+            ps.setString(1,input);
+            ResultSet rs = ps.executeQuery();
+            fillListOfResult(result, rs);
+            return result;
+        } catch (SQLException e){
+            throw new RuntimeException(e);
+        }
+    }
+
+    private void fillListOfResult(List<Customer> result, ResultSet rs) throws SQLException {
+        while (rs.next()){
+            long id = rs.getLong("id");
+            String name = rs.getString("name");
+            String lastname = rs.getString("lastname");
+            Date birthDate = rs.getDate("birthDate");
+            String nacionality = rs.getString("nacionality");
+            String phoneNumber = rs.getString("phoneNumber");
+            long bookingId = rs.getLong("booking_id");
+            result.add(new Customer(id,name,lastname,birthDate,nacionality,phoneNumber,bookingId));
         }
     }
 }

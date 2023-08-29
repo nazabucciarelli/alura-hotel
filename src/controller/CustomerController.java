@@ -23,4 +23,8 @@ public class CustomerController {
     public int deleteById(Long id){
         return this.customerDAO.deleteById(id);
     }
+
+    public List<Customer> getByLastname(String param){
+        return this.customerDAO.getByLastname(param);
+    }
 }

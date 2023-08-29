@@ -44,20 +44,43 @@ public class BookingDAO {
             ResultSet rs = ps.executeQuery();
             try(rs){
                 while(rs.next()){
-                    Long id = rs.getLong("id");
-                    Date checkInDate =rs.getDate("checkin_date");
-                    Date checkOutDate = rs.getDate("checkout_date");
-                    double value = rs.getDouble("value");
-                    String payMethod = rs.getString("pay_method");
-                    long userId = rs.getLong("user_id");
-                    Booking booking = new Booking(id,checkInDate,checkOutDate,value,payMethod,userId);
-                    result.add(booking);
+                    fillListOfResult(rs,result);
                 }
+                return result;
             }
         } catch (SQLException e){
             throw new RuntimeException(e);
         }
-        return result;
+    }
+
+    public List<Booking> getBookingsById(long booking_id){
+        List<Booking> result = new ArrayList<>();
+        try{
+            PreparedStatement ps = this.con.prepareStatement("SELECT * FROM booking WHERE id = ?");
+            try(ps){
+                ps.setLong(1,booking_id);
+                ResultSet rs = ps.executeQuery();
+                try(rs){
+                    while(rs.next()){
+                        fillListOfResult(rs,result);
+                    }
+                    return  result;
+                }
+            }
+        }catch (SQLException e){
+            throw new RuntimeException(e);
+        }
+    }
+
+    private void fillListOfResult(ResultSet rs, List<Booking> result) throws SQLException {
+        long id = rs.getLong("id");
+        Date checkInDate =rs.getDate("checkin_date");
+        Date checkOutDate = rs.getDate("checkout_date");
+        double value = rs.getDouble("value");
+        String payMethod = rs.getString("pay_method");
+        long userId = rs.getLong("user_id");
+        Booking booking = new Booking(id,checkInDate,checkOutDate,value,payMethod,userId);
+        result.add(booking);
     }
 
     public int deleteById(long id){
