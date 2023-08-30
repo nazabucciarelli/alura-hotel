@@ -93,4 +93,39 @@ public class CustomerDAO {
             result.add(new Customer(id,name,lastname,birthDate,nacionality,phoneNumber,bookingId));
         }
     }
+
+    public List<Customer> getByBookingId(long id) {
+        List<Customer> result = new ArrayList<>();
+        try{
+            PreparedStatement ps = this.con.prepareStatement("SELECT * FROM customer WHERE booking_id=?");
+            try(ps){
+                ps.setLong(1,id);
+                ResultSet rs = ps.executeQuery();
+                try(rs){
+                    fillListOfResult(result,rs);
+                    return result;
+                }
+            }
+        } catch (SQLException e){
+            throw new RuntimeException(e);
+        }
+    }
+
+    public void updateById(Customer newCustomer, long id) {
+        try{
+            PreparedStatement st = this.con.prepareStatement("UPDATE customer SET name =?, lastname=?,birthDate=?," +
+                    "nacionality=?,phoneNumber=? WHERE id=?");
+            try(st){
+                st.setString(1,newCustomer.getName());
+                st.setString(2,newCustomer.getLastname());
+                st.setDate(3,newCustomer.getBirthDate());
+                st.setString(4,newCustomer.getNacionality());
+                st.setString(5,newCustomer.getPhoneNumber());
+                st.setLong(6,id);
+                st.executeUpdate();
+            }
+        } catch (SQLException e){
+            throw new RuntimeException(e);
+        }
+    }
 }

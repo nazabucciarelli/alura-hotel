@@ -27,4 +27,12 @@ public class CustomerController {
     public List<Customer> getByLastname(String param){
         return this.customerDAO.getByLastname(param);
     }
+
+    public List<Customer> getByBookingId(long id) {
+        return this.customerDAO.getByBookingId(id);
+    }
+
+    public void updateById(Customer newCustomer, long id){
+        this.customerDAO.updateById(newCustomer, id);
+    }
 }

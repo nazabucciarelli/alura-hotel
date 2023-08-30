@@ -26,6 +26,13 @@ public class Booking {
         this.user_id = user_id;
     }
 
+    public Booking(Date checkinDate, Date checkoutDate, double value, String payMethod) { // Constructor to modify the record
+        this.checkInDate = checkinDate;
+        this.checkOutDate = checkoutDate;
+        this.value = value;
+        this.payMethod = payMethod;
+    }
+
 
     public Date getCheckInDate() {
         return checkInDate;

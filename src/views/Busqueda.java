@@ -5,17 +5,13 @@ import controller.CustomerController;
 import model.Booking;
 import model.Customer;
 
-import java.awt.EventQueue;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
 import java.awt.Color;
-import java.awt.SystemColor;
 import java.awt.Font;
-import java.awt.event.ActionListener;
-import java.util.Arrays;
+import java.sql.Date;
 import java.util.List;
-import java.awt.event.ActionEvent;
 import java.awt.Toolkit;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -264,6 +260,15 @@ public class Busqueda extends JFrame {
             }
         });
 
+        btnEditar.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                modificarRegistro();
+                limpiarTablas();
+                cargarTablas();
+            }
+        });
+
         JLabel lblEliminar = new JLabel("ELIMINAR");
         lblEliminar.setHorizontalAlignment(SwingConstants.CENTER);
         lblEliminar.setForeground(Color.WHITE);
@@ -300,6 +305,33 @@ public class Busqueda extends JFrame {
         }
     }
 
+    public void modificarRegistro(){
+        if (tieneFilaElegida(tbHuespedes)) {
+            Optional.ofNullable(modeloHuesped.getValueAt(tbHuespedes.getSelectedRow(), tbHuespedes.getSelectedColumn()))
+                    .ifPresentOrElse(fila -> {
+                        long id = (long) modeloHuesped.getValueAt(tbHuespedes.getSelectedRow(), 0);
+                        String name = (String) modeloHuesped.getValueAt(tbHuespedes.getSelectedRow(), 1);
+                        String lastname = (String) modeloHuesped.getValueAt(tbHuespedes.getSelectedRow(), 2);
+                        Date birthDate = Date.valueOf((String)modeloHuesped.getValueAt(tbHuespedes.getSelectedRow(), 3));
+                        String nacionality = modeloHuesped.getValueAt(tbHuespedes.getSelectedRow(),4).toString();
+                        String phoneNumber = modeloHuesped.getValueAt(tbHuespedes.getSelectedRow(),5).toString();
+                        this.customerController.updateById(new Customer(name,lastname,birthDate,nacionality,phoneNumber), id);
+                        JOptionPane.showMessageDialog(this,"Registro de ID " + id +" editado correctamente");
+                    }, () -> JOptionPane.showMessageDialog(this, "Por favor, elije un item"));
+        } else if(tieneFilaElegida(tbReservas)){
+            Optional.ofNullable(modelo.getValueAt(tbReservas.getSelectedRow(), tbReservas.getSelectedColumn()))
+                    .ifPresentOrElse(fila -> {
+                        long id = (long) modelo.getValueAt(tbReservas.getSelectedRow(), 0);
+                        Date checkinDate = Date.valueOf(modelo.getValueAt(tbReservas.getSelectedRow(), 1).toString());
+                        Date checkoutDate = Date.valueOf(modelo.getValueAt(tbReservas.getSelectedRow(), 2).toString());
+                        double value = (double) modelo.getValueAt(tbReservas.getSelectedRow(), 3);
+                        String payMethod = modelo.getValueAt(tbReservas.getSelectedRow(),4).toString();
+                        this.bookingController.updateById(new Booking(checkinDate,checkoutDate,value,payMethod), id);
+                        JOptionPane.showMessageDialog(this,"Registro de ID " + id +" editado correctamente");
+                    }, () -> JOptionPane.showMessageDialog(this, "Por favor, elije un item"));
+        }
+    }
+
     private void cargarTablas() {
         List<Customer> customers = customerController.getAllCustomers();
         List<Booking> bookings = bookingController.getAllBookings();
@@ -317,20 +349,29 @@ public class Busqueda extends JFrame {
 
     private void buscarPorParametro(String param){
         limpiarTablas();
-        if(param.isEmpty()){
+        if(!param.isEmpty()){
+            try{
+                long id = Long.parseLong(param);
+                List<Customer> customersResult = this.customerController.getByBookingId(id);
+                customersResult.forEach(customer -> modeloHuesped.addRow(new Object[]{customer.getId(), customer.getName(),
+                        customer.getLastname(), customer.getBirthDate(), customer.getNacionality(), customer.getPhoneNumber(),
+                        customer.getBookingId()}));
+                List<Booking> bookingsResult =  this.bookingController.getById(id);
+                bookingsResult.forEach(booking -> modelo.addRow(new Object[]{booking.getId(), booking.getCheckInDate(), booking.getCheckOutDate(),
+                        booking.getValue(), booking.getPayMethod()}));
+
+            } catch (Exception e){
+                List<Customer> customersResult = this.customerController.getByLastname(param);
+                customersResult.forEach(customer -> modeloHuesped.addRow(new Object[]{customer.getId(), customer.getName(),
+                        customer.getLastname(), customer.getBirthDate(), customer.getNacionality(), customer.getPhoneNumber(),
+                        customer.getBookingId()}));
+                List<Booking> bookingsResult =  this.bookingController.getById(customersResult.get(0).getBookingId());
+                bookingsResult.forEach(booking -> modelo.addRow(new Object[]{booking.getId(), booking.getCheckInDate(), booking.getCheckOutDate(),
+                        booking.getValue(), booking.getPayMethod()}));
+            }
+        } else {
             limpiarTablas();
             cargarTablas();
-        }
-        try{
-            long id = Long.parseLong(param);
-            List<Booking> bookingsResult =  this.bookingController.getBookingsById(id);
-            bookingsResult.forEach(booking -> modelo.addRow(new Object[]{booking.getId(), booking.getCheckInDate(), booking.getCheckOutDate(),
-                    booking.getValue(), booking.getPayMethod()}));
-        } catch (Exception e){
-            List<Customer> customersResult = this.customerController.getByLastname(param);
-            customersResult.forEach(customer -> modeloHuesped.addRow(new Object[]{customer.getId(), customer.getName(),
-                    customer.getLastname(), customer.getBirthDate(), customer.getNacionality(), customer.getPhoneNumber(),
-                    customer.getBookingId()}));
         }
     }
 

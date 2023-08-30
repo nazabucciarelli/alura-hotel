@@ -31,7 +31,12 @@ public class Customer {
         this.bookingId = bookingId;
     }
 
-    public Customer() {
+    public Customer(String name, String lastname, Date birthDate, String nacionality, String phoneNumber) { // Constructor for make updates.
+        this.name = name;
+        this.lastname = lastname;
+        this.birthDate = birthDate;
+        this.nacionality = nacionality;
+        this.phoneNumber = phoneNumber;
     }
 
     public Long getId() {

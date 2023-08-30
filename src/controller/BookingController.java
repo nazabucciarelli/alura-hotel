@@ -25,9 +25,12 @@ public class BookingController {
         return this.bookingDAO.deleteById(id);
     }
 
-    public List<Booking> getBookingsById(long id){
-        return this.bookingDAO.getBookingsById(id);
+    public List<Booking> getById(long id){
+        return this.bookingDAO.getById(id);
     }
 
+    public void updateById(Booking newBooking, long id){
+        this.bookingDAO.updateById(newBooking, id);
+    }
 
 }

@@ -53,7 +53,7 @@ public class BookingDAO {
         }
     }
 
-    public List<Booking> getBookingsById(long booking_id){
+    public List<Booking> getById(long booking_id){
         List<Booking> result = new ArrayList<>();
         try{
             PreparedStatement ps = this.con.prepareStatement("SELECT * FROM booking WHERE id = ?");
@@ -94,6 +94,23 @@ public class BookingDAO {
                     psBooking.setLong(1,id);
                     return psBooking.executeUpdate();
                 }
+            }
+        } catch (SQLException e){
+            throw new RuntimeException(e);
+        }
+    }
+
+    public void updateById(Booking newBooking, long id) {
+        try{
+            PreparedStatement ps = this.con.prepareStatement("UPDATE booking SET checkin_date=?,checkout_date=?,value=?," +
+                    "pay_method=? WHERE id=?");
+            try(ps){
+                ps.setDate(1,newBooking.getCheckInDate());
+                ps.setDate(2,newBooking.getCheckOutDate());
+                ps.setDouble(3,newBooking.getValue());
+                ps.setString(4,newBooking.getPayMethod());
+                ps.setLong(5,id);
+                ps.executeUpdate();
             }
         } catch (SQLException e){
             throw new RuntimeException(e);
