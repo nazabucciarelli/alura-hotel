@@ -25,11 +25,17 @@
 ## Levantando el proyecto
 
 1 - Efectuar fork al repositorio.
+
 2 - Clonar una instancia local del mismo usando Git mediante el comando:
-```git clone 
+
+```
+git clone https://github.com/nazabucciarelli/alura-hotel.git
 ```
 3 - Abrir proyecto usando IntelliJ como IDE. En caso de usar Eclipse u otro, importarlo con su configuración requerida para el reconocimiento de los módulos.
-4 - Ejecutar la clase Main.
+
+4- Crear una base de datos llamada "alura_hotel" en localhost, con las tablas users (con campos id <int auto_increment>, username <varchar(50)> y password<varchar(50)>), customer (con campos id <int auto_increment>, name <varchar(50)>, lastname <varchar(50)>, birthdate <Date>,nationality <varchar(50)>, phoneNumber, <varchar(50)>,booking_id <int con foreign key en tabla booking>) y por último será necesaria la tabla booking (con campos id <int auto_increment>,checkin_date <Date>,checkout_date<Date>,value,pay_method <varchar(50)> y user_id <int con foreign key en tabla user>)
+
+4 - Ejecutar la clase Main, agregar registros y efectuar operaciones.
 
 ## Author
 
