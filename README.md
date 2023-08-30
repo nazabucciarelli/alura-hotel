@@ -1,9 +1,8 @@
 # Challenge ONE | Java | Back-end | Hotel Alura
 
+<p align="center">Esta aplicación de escritorio fue creado bajo el supuesto de que una empresa necesitaba gestionar sus reservas y clientes de un hotel. La interfaz gráfica estaba pre-hecha, soplo tuve que utilizarla y dedicarme a la lógica y conexión con base de datos MySQL para que el sistema sea funcional. Sirvió mucho este challenge para entender más a fondo la arquitectura MVC. </p>
 
 <p align="center" >
-     <p>Esta aplicación de escritorio fue creado bajo el supuesto de que una empresa necesitaba gestionar sus reservas y clientes de un hotel. La interfaz gráfica estaba pre-hecha, soplo tuve que
-     utilizarla y dedicarme a la lógica y conexión con base de datos MySQL para que el sistema sea funcional. Sirvió mucho este challenge para entender más a fondo la arquitectura MVC. </p>
      <img width="300" heigth="300" src="https://user-images.githubusercontent.com/91544872/189419040-c093db78-c970-4960-8aca-ffcc11f7ffaf.png">
 </p>
 
